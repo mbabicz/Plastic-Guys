@@ -173,7 +173,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: dd00f49a93528f2449aaeb007daa27dd, type: 3}
+  - {fileID: 2100000, guid: 5971fc87fcaf7ef40a4a4fcd4a830a5f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1468,9 +1468,9 @@ ConfigurableJoint:
   m_ConnectedAnchor: {x: -1.6940659e-21, y: 0.5586636, z: 0.00000009850009}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
-  m_XMotion: 0
-  m_YMotion: 0
-  m_ZMotion: 0
+  m_XMotion: 2
+  m_YMotion: 2
+  m_ZMotion: 2
   m_AngularXMotion: 2
   m_AngularYMotion: 2
   m_AngularZMotion: 2
@@ -1572,7 +1572,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827075974247863523}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11a22db654a5b0e499adfb575c5ace86, type: 3}
   m_Name: 
@@ -1603,6 +1603,7 @@ GameObject:
   - component: {fileID: 5866666021531463566}
   - component: {fileID: 919132149539483471}
   - component: {fileID: 919132149539483472}
+  - component: {fileID: 919132149539483473}
   m_Layer: 6
   m_Name: ActiveRagdoll
   m_TagString: Untagged
@@ -1647,6 +1648,18 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &919132149539483473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149539483470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e454012b804f9a44ca22030aa66ddcf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1324260384847052339
 GameObject:
   m_ObjectHideFlags: 0
@@ -2428,7 +2441,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: dd00f49a93528f2449aaeb007daa27dd, type: 3}
+  - {fileID: 2100000, guid: 5971fc87fcaf7ef40a4a4fcd4a830a5f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
