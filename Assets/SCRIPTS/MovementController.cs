@@ -18,11 +18,11 @@ public class MovementController : MonoBehaviour
     //jumping
     private bool jumping;
     private bool readyToJump = true;
-    private bool grounded;
+    [SerializeField] private bool grounded;
     private float jumpForce = 250f;
     private float jumpCooldown = 0.25f;
 
-    private LayerMask whatIsGround;
+    [SerializeField] private LayerMask whatIsGround;
     private float maxSlopeAngle = 35f;
     private bool cancellingGrounded;
 private bool IsFloor(Vector3 v)
@@ -39,7 +39,7 @@ private bool IsFloor(Vector3 v)
 
     void Start()
     {
-        
+        //m_Animator.SetBool("Walk", isWalking);
     }
 
     // Update is called once per frame
@@ -78,7 +78,7 @@ private bool IsFloor(Vector3 v)
             isWalking = false;
         }
 
-        //m_Animator.SetBool("Walk", isWalking);
+       m_Animator.SetBool("Walk", isWalking);
 
     }
 
