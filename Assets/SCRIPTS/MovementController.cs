@@ -46,10 +46,15 @@ private bool IsFloor(Vector3 v)
     void Update()
     {
         InputSystem();
-        Movement();
+        
 
         //jumping
         if (readyToJump && jumping) Jump();
+    }
+
+    private void FixedUpdate()
+    {
+        Movement();
     }
 
 
