@@ -559,7 +559,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233972729}
-  m_LocalRotation: {x: 0.14581615, y: -0.000000008511236, z: 0.000000001254484, w: 0.9893117}
+  m_LocalRotation: {x: 0.14581615, y: 0.000000008511237, z: -0.0000000012544841, w: 0.9893117}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1425,6 +1425,7 @@ GameObject:
   - component: {fileID: 466842398}
   - component: {fileID: 466842397}
   - component: {fileID: 466842396}
+  - component: {fileID: 466842400}
   m_Layer: 6
   m_Name: RightHand
   m_TagString: Untagged
@@ -1587,6 +1588,24 @@ CapsuleCollider:
   m_Height: 26.187288
   m_Direction: 1
   m_Center: {x: -0.7554054, y: 1.359189, z: 2.217106}
+--- !u!114 &466842400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466842394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820f353c2f7fb064eb454c04f69b2b86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shoulderJoint: {fileID: 1697765032}
+  isHoldingArm: 0
+  hip: {fileID: 1400535685}
+  cam: {fileID: 2004930786}
+  armDirection: {x: 0, y: 0, z: 0}
+  handJoint: {fileID: 466842397}
 --- !u!1 &624230363
 GameObject:
   m_ObjectHideFlags: 0
@@ -2246,6 +2265,7 @@ GameObject:
   - component: {fileID: 855827141}
   - component: {fileID: 855827143}
   - component: {fileID: 855827142}
+  - component: {fileID: 855827146}
   m_Layer: 6
   m_Name: LeftShoulder
   m_TagString: Untagged
@@ -2408,6 +2428,24 @@ Transform:
   m_Father: {fileID: 986004189}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &855827146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855827140}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f815e7a47a35c51429eabaf2da91fea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shoulderJoint: {fileID: 0}
+  isHoldingArm: 0
+  hip: {fileID: 1400535685}
+  cam: {fileID: 2004930786}
+  armDirection: {x: 0, y: 0, z: 0}
+  handJoint: {fileID: 1109611354}
 --- !u!1 &905732117
 GameObject:
   m_ObjectHideFlags: 0
@@ -2847,6 +2885,7 @@ GameObject:
   - component: {fileID: 1109611355}
   - component: {fileID: 1109611354}
   - component: {fileID: 1109611353}
+  - component: {fileID: 1109611357}
   m_Layer: 6
   m_Name: LeftHand
   m_TagString: Untagged
@@ -2987,9 +3026,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1109611351}
   serializedVersion: 2
-  m_Mass: 0.38
-  m_Drag: 0.64
-  m_AngularDrag: 0.49
+  m_Mass: 1
+  m_Drag: 3
+  m_AngularDrag: 3
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -3009,6 +3048,24 @@ CapsuleCollider:
   m_Height: 25.397417
   m_Direction: 1
   m_Center: {x: 0.5217003, y: 2.5410786, z: 3.3338401}
+--- !u!114 &1109611357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109611351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f815e7a47a35c51429eabaf2da91fea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shoulderJoint: {fileID: 855827143}
+  isHoldingArm: 0
+  hip: {fileID: 1400535685}
+  cam: {fileID: 2004930786}
+  armDirection: {x: 0, y: 0, z: 0}
+  handJoint: {fileID: 1109611354}
 --- !u!1 &1145400607
 GameObject:
   m_ObjectHideFlags: 0
@@ -4151,7 +4208,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632416254}
-  m_LocalRotation: {x: 0.18165658, y: -0.000000038731173, z: 0.000000007154814, w: 0.9833621}
+  m_LocalRotation: {x: 0.18165661, y: -0.000000041829498, z: 0.000000007727169, w: 0.9833621}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4203,6 +4260,7 @@ GameObject:
   - component: {fileID: 1697765030}
   - component: {fileID: 1697765032}
   - component: {fileID: 1697765031}
+  - component: {fileID: 1697765035}
   m_Layer: 6
   m_Name: RightShoulder
   m_TagString: Untagged
@@ -4365,6 +4423,24 @@ Transform:
   m_Father: {fileID: 986004189}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 106.368, y: 64.726, z: -26.793}
+--- !u!114 &1697765035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697765029}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820f353c2f7fb064eb454c04f69b2b86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shoulderJoint: {fileID: 0}
+  isHoldingArm: 0
+  hip: {fileID: 1400535685}
+  cam: {fileID: 2004930786}
+  armDirection: {x: 0, y: 0, z: 0}
+  handJoint: {fileID: 0}
 --- !u!1 &1728574874
 GameObject:
   m_ObjectHideFlags: 0
@@ -4650,7 +4726,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1819586921}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e9158eb3f7512f48928509d238c383c, type: 3}
   m_Name: 
@@ -4881,7 +4957,7 @@ GameObject:
   - component: {fileID: 1889563856}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: grabbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5485,7 +5561,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004930782}
-  m_LocalRotation: {x: 0.16373971, y: 3.00382e-10, z: 4.987966e-11, w: 0.9865036}
+  m_LocalRotation: {x: 0.16373971, y: -3.00382e-10, z: -4.9879646e-11, w: 0.9865036}
   m_LocalPosition: {x: 0.00000012286654, y: 8.92, z: -18.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
