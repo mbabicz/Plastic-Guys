@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1606,6 +1606,14 @@ MonoBehaviour:
   cam: {fileID: 2004930786}
   armDirection: {x: 0, y: 0, z: 0}
   handJoint: {fileID: 466842397}
+  campos: {x: 0, y: 0, z: 0}
+  hippos: {x: 0, y: 0, z: 0}
+  test1: {x: 0, y: 0, z: 0}
+  test2: {x: 0, y: 0, z: 0}
+  test4: {x: 0, y: 0, z: 0}
+  test3: {x: 0, y: 0, z: 0}
+  test5: {x: 0, y: 0, z: 0}
+  test6: {x: 0, y: 0, z: 0}
 --- !u!1 &624230363
 GameObject:
   m_ObjectHideFlags: 0
@@ -2264,8 +2272,6 @@ GameObject:
   - component: {fileID: 855827144}
   - component: {fileID: 855827141}
   - component: {fileID: 855827143}
-  - component: {fileID: 855827142}
-  - component: {fileID: 855827146}
   m_Layer: 6
   m_Name: LeftShoulder
   m_TagString: Untagged
@@ -2289,20 +2295,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &855827142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 855827140}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11a22db654a5b0e499adfb575c5ace86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetLimb: {fileID: 1327590263}
-  m_ConfigurableJoint: {fileID: 0}
 --- !u!153 &855827143
 ConfigurableJoint:
   m_ObjectHideFlags: 0
@@ -2428,24 +2420,6 @@ Transform:
   m_Father: {fileID: 986004189}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &855827146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 855827140}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f815e7a47a35c51429eabaf2da91fea9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shoulderJoint: {fileID: 0}
-  isHoldingArm: 0
-  hip: {fileID: 1400535685}
-  cam: {fileID: 2004930786}
-  armDirection: {x: 0, y: 0, z: 0}
-  handJoint: {fileID: 1109611354}
 --- !u!1 &905732117
 GameObject:
   m_ObjectHideFlags: 0
@@ -3585,7 +3559,6 @@ GameObject:
   - component: {fileID: 1400535689}
   - component: {fileID: 1400535685}
   - component: {fileID: 1400535688}
-  - component: {fileID: 1400535687}
   - component: {fileID: 1400535686}
   m_Layer: 6
   m_Name: Hips
@@ -3622,20 +3595,6 @@ ConstantForce:
   m_RelativeForce: {x: 0, y: 0, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
   m_RelativeTorque: {x: 0, y: 0, z: 0}
---- !u!114 &1400535687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1400535684}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11a22db654a5b0e499adfb575c5ace86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetLimb: {fileID: 1208290777}
-  m_ConfigurableJoint: {fileID: 0}
 --- !u!153 &1400535688
 ConfigurableJoint:
   m_ObjectHideFlags: 0
@@ -4208,7 +4167,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632416254}
-  m_LocalRotation: {x: 0.18165661, y: -0.000000041829498, z: 0.000000007727169, w: 0.9833621}
+  m_LocalRotation: {x: 0.18165663, y: -0.000000022717074, z: 0.0000000041965285, w: 0.9833621}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4259,8 +4218,6 @@ GameObject:
   - component: {fileID: 1697765033}
   - component: {fileID: 1697765030}
   - component: {fileID: 1697765032}
-  - component: {fileID: 1697765031}
-  - component: {fileID: 1697765035}
   m_Layer: 6
   m_Name: RightShoulder
   m_TagString: Untagged
@@ -4284,20 +4241,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1697765031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1697765029}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11a22db654a5b0e499adfb575c5ace86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetLimb: {fileID: 631511824}
-  m_ConfigurableJoint: {fileID: 0}
 --- !u!153 &1697765032
 ConfigurableJoint:
   m_ObjectHideFlags: 0
@@ -4423,24 +4366,6 @@ Transform:
   m_Father: {fileID: 986004189}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 106.368, y: 64.726, z: -26.793}
---- !u!114 &1697765035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1697765029}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 820f353c2f7fb064eb454c04f69b2b86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shoulderJoint: {fileID: 0}
-  isHoldingArm: 0
-  hip: {fileID: 1400535685}
-  cam: {fileID: 2004930786}
-  armDirection: {x: 0, y: 0, z: 0}
-  handJoint: {fileID: 0}
 --- !u!1 &1728574874
 GameObject:
   m_ObjectHideFlags: 0
@@ -4640,7 +4565,6 @@ GameObject:
   - component: {fileID: 1819586925}
   - component: {fileID: 1819586923}
   - component: {fileID: 1819586924}
-  - component: {fileID: 1819586926}
   m_Layer: 6
   m_Name: ActiveRagdoll
   m_TagString: Untagged
@@ -4719,23 +4643,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1819586926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1819586921}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e9158eb3f7512f48928509d238c383c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftShoulderJoint: {fileID: 855827143}
-  rightShoulderJoint: {fileID: 1697765032}
-  hip: {fileID: 1400535685}
-  cam: {fileID: 2004930786}
-  armPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1836046954
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,18 @@ public class RightArm : MonoBehaviour
     [SerializeField] private Vector3 armDirection; 
     [SerializeField] private ConfigurableJoint handJoint;
 
+    //test
+    [SerializeField] private Vector3 campos;
+    [SerializeField] private Vector3 hippos;
+
+    [SerializeField] private Vector3 test1;
+    [SerializeField] private Vector3 test2;
+    [SerializeField] private Vector3 test4;
+    [SerializeField] private Vector3 test3;
+
+    [SerializeField] private Vector3 test5;
+    [SerializeField] private Vector3 test6;
+
     void Start()
     {
     }
@@ -19,6 +31,17 @@ public class RightArm : MonoBehaviour
     void Update()
     {
         armDirection = hip.position - cam.position;
+        campos = cam.position;
+        hippos = hip.position;
+
+        test1 = cam.position + hip.position;
+        test2 = cam.position - hip.position;
+
+        test3 = -cam.position + hip.position;
+        test4 = -cam.position - hip.position;
+
+        test5 = -hip.position - cam.position;
+        test6 = -hip.position - cam.position;
         if(Input.GetButton("Fire2")){
             shoulderJoint.targetRotation = Quaternion.Euler(0f,-armDirection.y * 10f,340f);
             isHoldingArm = true;
@@ -43,6 +66,7 @@ public class RightArm : MonoBehaviour
             Rigidbody rb = other.transform.GetComponent<Rigidbody>();
             if(rb !=null){
                 FixedJoint fj = transform.gameObject.AddComponent(typeof(FixedJoint)) as FixedJoint;
+                fj.connectedBody = rb;
             }
         }
         

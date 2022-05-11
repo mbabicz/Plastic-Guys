@@ -27,9 +27,8 @@ public class LeftArm : MonoBehaviour
         }
         else {
             isHoldingArm = false;
-            //handJoint.connectedBody = null;
             SetDefaultRotation();
-            //Destroy(GetComponent<FixedJoint>());
+            Destroy(GetComponent<FixedJoint>());
         }
 
         
@@ -38,6 +37,18 @@ public class LeftArm : MonoBehaviour
         private void SetDefaultRotation(){
             shoulderJoint.targetRotation = Quaternion.Euler(0f,0f,0f);
 
+    }
+
+   private void OnCollisionEnter(Collision other){
+        if(isHoldingArm){   
+            Debug.Log("collision");
+            Rigidbody rb = other.transform.GetComponent<Rigidbody>();
+            if(rb !=null){
+                FixedJoint fj = transform.gameObject.AddComponent(typeof(FixedJoint)) as FixedJoint;
+                fj.connectedBody = rb;
+            }
+        }
+        
     }
 
 }
