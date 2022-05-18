@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class PauseMenu : MonoBehaviour
@@ -14,22 +15,33 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] private Slider red;
     [SerializeField] private Slider green;
-    [SerializeField] private Slider blue;    
-
-    [SerializeField] private MeshRenderer playerUI;
-
+    [SerializeField] private Slider blue;
+    [SerializeField] private GameObject playerUI;
+    [SerializeField] private GameObject player;
+    private static readonly int UnscaledTime = Shader.PropertyToID("_UnscaledTime");
+    private Renderer rend;
+    private Color color;
     void Start()
     {
+        rend = playerUI.GetComponent<Renderer>();
         GameIsPaused = false;
         pauseMenuUI.SetActive(false);
+        playerUI.SetActive(false);
+
 
         UIcomponents = GameObject.FindGameObjectsWithTag("UIcomponent");
         for(int i=0;i<UIcomponents.Length; i++) UIcomponents[i].SetActive(true);
+
+        
 
     }
 
     void Update()
     {
+        if (GameIsPaused) ColorController();
+
+
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused == true)
@@ -43,20 +55,22 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    void Resume()
+    public void Resume()
     {
         pauseMenuUI.SetActive(false);
+        playerUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         for(int i=0;i<UIcomponents.Length; i++) UIcomponents[i].SetActive(true);
     }
-    void Pause()
+    public void Pause()
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
         pauseMenuUI.SetActive(true);
+        playerUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
         for(int i=0;i<UIcomponents.Length; i++) UIcomponents[i].SetActive(false);
@@ -68,13 +82,28 @@ public class PauseMenu : MonoBehaviour
         Application.Quit();
     }
 
+    public void NewGame()
+    {
+        SceneManager.LoadScene("mainscene", LoadSceneMode.Single);
+        Resume();
+    }
+
+
     //materials
-    private void OnEdit(){
-        Color color = playerUI.material.color;
+    public void ColorController(){
+
+        color = rend.material.color;
         color.r = red.value;
         color.g = green.value;
         color.b = blue.value;
-        playerUI.material.color = color;
-        playerUI.material.SetColor("_EmissionColor", color);
+        if (rend.material.HasProperty(UnscaledTime)) rend.material.SetFloat(UnscaledTime, Time.unscaledTime);
+        rend.material.color = color;
+        rend.material.SetColor("_EmissionColor", color);
+    }
+
+    public void ApplyColor(){
+        player.GetComponent<Renderer>().material.color = color;
+        player.GetComponent<Renderer>().material.SetColor("_EmissionColor", color);
+
     }
 }
