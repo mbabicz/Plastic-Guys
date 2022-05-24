@@ -21,6 +21,9 @@ public class PauseMenu : MonoBehaviour
     private static readonly int UnscaledTime = Shader.PropertyToID("_UnscaledTime");
     private Renderer rend;
     private Color color;
+
+
+    [SerializeField] private AudioClip clickSound;
     void Start()
     {
         rend = playerUI.GetComponent<Renderer>();
@@ -106,4 +109,9 @@ public class PauseMenu : MonoBehaviour
         player.GetComponent<Renderer>().material.SetColor("_EmissionColor", color);
 
     }
+
+    public void ClickSound(){
+        AudioSource.PlayClipAtPoint(clickSound,transform.position);
+    }
+
 }
