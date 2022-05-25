@@ -23,6 +23,8 @@ public class RightArm : MonoBehaviour
     [SerializeField] private Vector3 test5;
     [SerializeField] private Vector3 test6;
 
+    Vector3 temp;
+
     void Start()
     {
     }
@@ -30,7 +32,9 @@ public class RightArm : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        armDirection = hip.position - cam.position;
+        temp = new Vector3(cam.position.x, - cam.position.y, cam.position.z);
+
+        armDirection = hip.position - temp;
         campos = cam.position;
         hippos = hip.position;
 
@@ -43,7 +47,7 @@ public class RightArm : MonoBehaviour
         test5 = -hip.position - cam.position;
         test6 = -hip.position - cam.position;
         if(Input.GetButton("Fire2")){
-            shoulderJoint.targetRotation = Quaternion.Euler(0f,-armDirection.y * 10f,340f);
+            shoulderJoint.targetRotation = Quaternion.Euler(0f,armDirection.y * 10f,340f);
             isHoldingArm = true;
         }
         else {

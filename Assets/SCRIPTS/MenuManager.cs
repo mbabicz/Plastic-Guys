@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class MenuManager : MonoBehaviour
 {
@@ -28,4 +30,18 @@ public class MenuManager : MonoBehaviour
     public void ClickSound(){
         AudioSource.PlayClipAtPoint(clickSound,transform.position);
     }
+
+   public void Button_Quit()
+    {
+        Application.Quit();
+    }
+
+    public void NewGame()
+    {
+        SceneManager.LoadScene("mainscene", LoadSceneMode.Single);
+
+    }
+
+
+
 }

@@ -11,7 +11,7 @@ public class ThirdPersonMovement : MonoBehaviour
     [SerializeField] private float horizontal,vertical;
     [SerializeField] private ConfigurableJoint hipJoint;
     [SerializeField] private Rigidbody hip;
-    [SerializeField] private float speed = 25f;
+    [SerializeField] private float speed = 5550f;
     [SerializeField] private bool isWalking;
     [SerializeField] private Animator m_Animator;
 
