@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     public void OpenGate(){
         //ANIMATION
-        LeftDoorAnim.SetTrigger("OpenGate");
+        GateAnimator.SetTrigger("OpenGate");
     }
 
     public void CloseGate(){
