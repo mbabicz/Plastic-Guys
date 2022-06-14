@@ -1,79 +1,88 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    private bool canFollow;
-    Transform player;
-    public float FollowRange;
-    private Transform baseRotation;
-    private float ZombieSpeed;
+    [SerializeField] private GameObject player;
+    [SerializeField] private NavMeshAgent enemy;
+    [SerializeField] private Animator m_Animator;
+    [SerializeField] private float stoppingDistance;
+    [SerializeField] private float dist, zombieRange;
+    [SerializeField] private bool canFollow;
 
-     
-    private GameObject Player;
+    float lastAttack = 0;
+    float attackCooldown = 2f;
+
     void Start()
     {
-        canFollow = false;
+
+        player = GameObject.FindWithTag("Player");
+        enemy = this.GetComponent<NavMeshAgent>();
+        m_Animator = gameObject.GetComponent<Animator>();
         StartCoroutine(RandomWalk());
-        this.GetComponent<SphereCollider>().radius = FollowRange;
-
-        Player = GameObject.FindWithTag("Player");
-        ZombieSpeed = 15f;
     }
 
-    void FixedUpdate()
-    {
-        if (canFollow){
-            FollowPlayer();
-        }
-    }
 
-    
-    void OnDrawGizmosSelected() //FollowRange preview
+    void Update()
     {
-        
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, FollowRange);
-    }
-
-    void OnTriggerEnter(Collider other) // enemy detection 
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            player = other.transform;
+        dist = Vector3.Distance(transform.position, player.transform.position);
+        if(dist < stoppingDistance){
+            StopWalk();
+            Attack();
             canFollow = true;
-            StopCoroutine(RandomWalk());
-            Debug.Log("CanFollow = " +  canFollow);
         }
-    }
-    void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Player") canFollow = false;
-        StartCoroutine(RandomWalk());
+        else if (dist > stoppingDistance && dist < zombieRange) {
+            m_Animator.SetBool("isAttacking", false);
+            canFollow = true;
+            GoToPlayer();
+        }
+        else{
+            canFollow = false;
+        }
         
-    }
-
-    void FollowPlayer(){
-        Vector3 TargetPosition = new Vector3(player.position.x, this.transform.position.y, player.position.z);
-        this.transform.LookAt(TargetPosition);
-        float distanceBetweenObjects = Vector3.Distance(transform.position, player.transform.position);
-        if(distanceBetweenObjects > 2){
-            this.GetComponent<Rigidbody>().AddForce(transform.forward * ZombieSpeed);
-        }
-        if(distanceBetweenObjects <= 2){
-            //attack
-        }
     }
 
     IEnumerator RandomWalk(){
-        
-        Vector3 RandomPosition = new Vector3(Random.Range(0,360), this.transform.position.y, Random.Range(0,360));
+        if(!canFollow){
+            //Vector3 RandomPosition = new Vector3(Random.Range(0,10), this.transform.position.y, Random.Range(0,360));
+            float rx = Random.Range(0,10);
+            float rz = Random.Range(0,10);
+            Vector3 randomDirection = new Vector3(rx, this.transform.position.y, rz);
+            enemy.SetDestination(randomDirection);
+            if(this.GetComponent<Rigidbody>().velocity.x > 1){
+                m_Animator.SetBool("isWalking", true);
+            }
+            else{
+                m_Animator.SetBool("isWalking", false);
+            }
+            
+        }
 
-        this.transform.LookAt(RandomPosition);
-        this.GetComponent<Rigidbody>().AddForce(transform.forward * 10);
         yield return new WaitForSeconds(Random.Range(3,10));
     }
+    void GoToPlayer(){
+        enemy.isStopped = false;
+        enemy.SetDestination(player.transform.position);
+        m_Animator.SetBool("isAttacking", false);
+        m_Animator.SetBool("isWalking", true);
         
-}
+    }
 
+    void StopWalk(){
+        enemy.isStopped = true;
+        m_Animator.SetBool("isWalking", false);
+    }
+
+    void Attack(){
+        if( Time.time  - lastAttack >= attackCooldown){
+            lastAttack = Time.time;
+            Vector3 TargetPosition = new Vector3(player.transform.position.x, this.transform.position.y, player.transform.position.z);
+            this.transform.LookAt(TargetPosition);
+            m_Animator.SetBool("isAttacking", true);
+
+        }
+
+    }
+}

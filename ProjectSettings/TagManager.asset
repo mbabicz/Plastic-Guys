@@ -6,6 +6,7 @@ TagManager:
   tags:
   - grabbable
   - PlayerArm
+  - UIcomponent
   layers:
   - Default
   - TransparentFX
