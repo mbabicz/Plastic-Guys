@@ -7,27 +7,15 @@ public class LeverController : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField] private GameObject crane;
-
-
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private float craneSpeed = 1.25f;
 
     private void FixedUpdate()
     {
-        if (this.transform.rotation.z > 20){
-            crane.transform.position = new Vector3(200,0,0) * Time.deltaTime; 
+        if (transform.rotation.eulerAngles.z > 220){
+            crane.GetComponent<Rigidbody>().AddForce(Vector3.right * craneSpeed,ForceMode.Impulse);
         }
-        if (this.transform.rotation.z < -20){
-            crane.transform.position = new Vector3(-2,0,0) * Time.deltaTime; 
+        if (transform.rotation.eulerAngles.z < 150){
+            crane.GetComponent<Rigidbody>().AddForce(Vector3.left * craneSpeed,ForceMode.Impulse);
         }
     }
 }

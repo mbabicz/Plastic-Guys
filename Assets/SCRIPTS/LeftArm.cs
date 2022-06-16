@@ -20,7 +20,7 @@ public class LeftArm : MonoBehaviour
     void Update()
     {
         armDirection = hip.position - cam.position;
-
+        Debug.DrawLine(hip.position,cam.position, Color.green);
         if(Input.GetButton("Fire1")){
             shoulderJoint.targetRotation = Quaternion.Euler(0f,(armDirection.y*10),-332f);
             isHoldingArm = true;

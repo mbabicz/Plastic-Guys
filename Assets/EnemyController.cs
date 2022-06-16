@@ -11,9 +11,11 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float stoppingDistance;
     [SerializeField] private float dist, zombieRange;
     [SerializeField] private bool canFollow;
+    [SerializeField] private Vector3 randomDirection;
 
     float lastAttack = 0;
     float attackCooldown = 2f;
+    [SerializeField] private float test1;
 
     void Start()
     {
@@ -42,20 +44,25 @@ public class EnemyController : MonoBehaviour
             canFollow = false;
         }
         
+        //test1 = transform.GetComponent<Rigidbody>().velocity.magnitude;
     }
 
     IEnumerator RandomWalk(){
         if(!canFollow){
             //Vector3 RandomPosition = new Vector3(Random.Range(0,10), this.transform.position.y, Random.Range(0,360));
+
+            //* random in a  
             float rx = Random.Range(0,10);
             float rz = Random.Range(0,10);
-            Vector3 randomDirection = new Vector3(rx, this.transform.position.y, rz);
+            randomDirection = new Vector3(rx, this.transform.position.y, rz);
             enemy.SetDestination(randomDirection);
-            if(this.GetComponent<Rigidbody>().velocity.x > 1){
+            if(GetComponent<Rigidbody>().velocity.magnitude > 0){
+                Debug.Log("zombie walk true");
                 m_Animator.SetBool("isWalking", true);
             }
             else{
                 m_Animator.SetBool("isWalking", false);
+                Debug.Log("zombie wlak false)");
             }
             
         }

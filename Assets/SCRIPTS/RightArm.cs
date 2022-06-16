@@ -32,11 +32,10 @@ public class RightArm : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        temp = new Vector3(cam.position.x, - cam.position.y, cam.position.z);
 
-        armDirection = hip.position - temp;
-        campos = cam.position;
-        hippos = hip.position;
+
+        Vector3 temp = new Vector3(cam.position.x, -1* cam.position.y, cam.position.z); 
+        armDirection = hip.position + temp;
 
         test1 = cam.position + hip.position;
         test2 = cam.position - hip.position;
