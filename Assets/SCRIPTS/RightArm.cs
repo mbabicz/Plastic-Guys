@@ -34,8 +34,10 @@ public class RightArm : MonoBehaviour
     {
 
 
-        Vector3 temp = new Vector3(cam.position.x, -1* cam.position.y, cam.position.z); 
-        armDirection = hip.position + temp;
+        //Vector3 temp = new Vector3(cam.position.x, -1* cam.position.y, cam.position.z); 
+        //armDirection = hip.position + temp;
+
+        armDirection = hip.position + cam.position;
 
         test1 = cam.position + hip.position;
         test2 = cam.position - hip.position;
