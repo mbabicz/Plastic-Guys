@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
 
-    [SerializeField] private Transform cam;
+    [SerializeField] private Camera m_camera;
     private float turnsmoothTime = 0.1f;
     private float turnsmoothVelocity;
     [SerializeField] private float horizontal,vertical;
@@ -21,19 +22,35 @@ public class ThirdPersonMovement : MonoBehaviour
     private float jumpForce = 250f;
     private bool jumping;
 
+    PhotonView view;
+
 
     public bool isGroundedL, isGroundedR;
 
+    private void Start() {
+        view = transform.parent.GetComponent<PhotonView>();
+        m_camera = Camera.main;
+        //  if(!view.IsMine){
+        //      Destroy(m_camera);
+        //  }
+    }
+
     void Update()
     {
-        InputSystem();
+        if(view.IsMine){
+            InputSystem();
+        }
+        
         
 
     }
 
     private void FixedUpdate()
     {
-        Movement();    
+        if(view.IsMine){
+            Movement();
+        }
+            
     }
 
 
@@ -55,14 +72,14 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (direction.magnitude >= 0.1f)
         {
-            float targetAngle = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg - cam.eulerAngles.y;
+            float targetAngle = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg - m_camera.transform.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnsmoothVelocity, turnsmoothTime);
             
             
             hipJoint.targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
             
             if(vertical == 1){
-                Vector3 forwardDir = hip.position - cam.position;
+                Vector3 forwardDir = hip.position - m_camera.transform.position;
 
                 forwardDir.Normalize();
 
@@ -70,7 +87,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
             }
             if(vertical == -1){
-                Vector3 forwardDir = hip.position - cam.position;
+                Vector3 forwardDir = hip.position - m_camera.transform.position;
 
                 forwardDir.Normalize();
 

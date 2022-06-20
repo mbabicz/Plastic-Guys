@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class RightArm : MonoBehaviour
 {
@@ -24,39 +25,42 @@ public class RightArm : MonoBehaviour
     [SerializeField] private Vector3 test6;
 
     Vector3 temp;
+    PhotonView view;
+
 
     void Start()
     {
+        view = transform.root.GetComponent<PhotonView>();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        if(view.IsMine){
+            //Vector3 temp = new Vector3(cam.position.x, -1* cam.position.y, cam.position.z); 
+            //armDirection = hip.position + temp;
 
-        //Vector3 temp = new Vector3(cam.position.x, -1* cam.position.y, cam.position.z); 
-        //armDirection = hip.position + temp;
+            armDirection = hip.position + cam.position;
 
-        armDirection = hip.position + cam.position;
+            test1 = cam.position + hip.position;
+            test2 = cam.position - hip.position;
 
-        test1 = cam.position + hip.position;
-        test2 = cam.position - hip.position;
+            test3 = -cam.position + hip.position;
+            test4 = -cam.position - hip.position;
 
-        test3 = -cam.position + hip.position;
-        test4 = -cam.position - hip.position;
-
-        test5 = -hip.position - cam.position;
-        test6 = -hip.position - cam.position;
-        if(Input.GetButton("Fire2")){
-            shoulderJoint.targetRotation = Quaternion.Euler(0f,armDirection.y * 10f,340f);
-            isHoldingArm = true;
+            test5 = -hip.position - cam.position;
+            test6 = -hip.position - cam.position;
+            if(Input.GetButton("Fire2")){
+                shoulderJoint.targetRotation = Quaternion.Euler(0f,armDirection.y * 10f,340f);
+                isHoldingArm = true;
+            }
+            else {
+                isHoldingArm = false;
+                SetDefaultRotation();
+                Destroy(GetComponent<FixedJoint>());
+            }
         }
-        else {
-            isHoldingArm = false;
-            SetDefaultRotation();
-            Destroy(GetComponent<FixedJoint>());
-        }
-
         
     }
 
@@ -66,15 +70,16 @@ public class RightArm : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other){
-        if(isHoldingArm){   
-            Debug.Log("collision");
-            Rigidbody rb = other.transform.GetComponent<Rigidbody>();
-            if(rb !=null){
-                FixedJoint fj = transform.gameObject.AddComponent(typeof(FixedJoint)) as FixedJoint;
-                fj.connectedBody = rb;
+        if(view.IsMine){
+            if(isHoldingArm){   
+                Debug.Log("collision");
+                Rigidbody rb = other.transform.GetComponent<Rigidbody>();
+                if(rb !=null){
+                    FixedJoint fj = transform.gameObject.AddComponent(typeof(FixedJoint)) as FixedJoint;
+                    fj.connectedBody = rb;
+                }
             }
         }
-        
     }
     
 

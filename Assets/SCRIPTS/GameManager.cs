@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
         redPlate = false;
         bluePlate = false;
 
-        GateAnimator = gate.GetComponent<Animator>();
+       // GateAnimator = gate.GetComponent<Animator>();
 
     }
 
