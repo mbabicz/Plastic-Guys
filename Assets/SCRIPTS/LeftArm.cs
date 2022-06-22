@@ -13,13 +13,11 @@ public class LeftArm : MonoBehaviour
     [SerializeField] private ConfigurableJoint handJoint;
     PhotonView view;
 
-
     void Start()
     {
         view = transform.root.GetComponent<PhotonView>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(view.IsMine){
@@ -34,28 +32,23 @@ public class LeftArm : MonoBehaviour
                 SetDefaultRotation();
                 Destroy(GetComponent<FixedJoint>());
             }
-        }
-
-        
+        }    
     }
 
-        private void SetDefaultRotation(){
-            shoulderJoint.targetRotation = Quaternion.Euler(0f,0f,0f);
-
+    private void SetDefaultRotation(){
+        shoulderJoint.targetRotation = Quaternion.Euler(0f,0f,0f);
     }
 
-   private void OnCollisionEnter(Collision other){
-        if(view.IsMine){
-            if(isHoldingArm){   
-                Debug.Log("left arm collision");
-                Rigidbody rb = other.transform.GetComponent<Rigidbody>();
-                if(rb !=null){
-                    FixedJoint fj = transform.gameObject.AddComponent(typeof(FixedJoint)) as FixedJoint;
-                    fj.connectedBody = rb;
-                }
+    private void OnCollisionEnter(Collision other){
+        if(isHoldingArm){   
+            other.transform.GetComponent<PhotonView>().RequestOwnership();
+            Debug.Log("left arm collision");
+            Rigidbody rb = other.transform.GetComponent<Rigidbody>();
+            if(rb !=null){
+                FixedJoint fj = transform.gameObject.AddComponent(typeof(FixedJoint)) as FixedJoint;
+                fj.connectedBody = rb;
             }
-        }
-        
+        } 
     }
 
 }

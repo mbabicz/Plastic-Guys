@@ -5,7 +5,6 @@ using Photon.Pun;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
-
     [SerializeField] private Camera m_camera;
     private float turnsmoothTime = 0.1f;
     private float turnsmoothVelocity;
@@ -24,15 +23,12 @@ public class ThirdPersonMovement : MonoBehaviour
 
     PhotonView view;
 
-
     public bool isGroundedL, isGroundedR;
 
-    private void Start() {
+    private void Start() 
+    {
         view = transform.parent.GetComponent<PhotonView>();
         m_camera = Camera.main;
-        //  if(!view.IsMine){
-        //      Destroy(m_camera);
-        //  }
     }
 
     void Update()
@@ -40,8 +36,6 @@ public class ThirdPersonMovement : MonoBehaviour
         if(view.IsMine){
             InputSystem();
         }
-        
-        
 
     }
 
@@ -49,21 +43,20 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         if(view.IsMine){
             Movement();
-        }
-            
+        }       
     }
 
 
-    void InputSystem(){
-
+    void InputSystem()
+    {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
         jumping = Input.GetButton("Jump");
     
     }
 
-    void Movement(){
-
+    void Movement()
+    {
         //*extra gravity
         if(!isGroundedR && !isGroundedR){
             hip.AddForce(Vector3.down * Time.deltaTime * 500,ForceMode.Impulse);
@@ -130,7 +123,6 @@ public class ThirdPersonMovement : MonoBehaviour
             Invoke(nameof(ResetJump), jumpCooldown);
         }
     }
-
     private void ResetJump()
     {
         readyToJump = true;

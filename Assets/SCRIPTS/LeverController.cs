@@ -1,21 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class LeverController : MonoBehaviour
 {
-    // Start is called before the first frame update
-
-    [SerializeField] private GameObject crane;
-    private float craneSpeed = 1.25f;
-
+    [SerializeField] private GameObject platform;
+    private float platformSpeed = 2f;
+    PhotonView view;
     private void FixedUpdate()
     {
         if (transform.rotation.eulerAngles.z > 220){
-            crane.GetComponent<Rigidbody>().AddForce(Vector3.right * craneSpeed,ForceMode.Impulse);
+            platform.transform.GetComponent<PhotonView>().RequestOwnership();
+            PushPlatform();
         }
         if (transform.rotation.eulerAngles.z < 150){
-            crane.GetComponent<Rigidbody>().AddForce(Vector3.left * craneSpeed,ForceMode.Impulse);
+            platform.transform.GetComponent<PhotonView>().RequestOwnership();
+            PullPlatform();
         }
+    }
+
+    void PushPlatform(){
+        if(platform.transform.position.x < 136){
+            platform.transform.Translate(Vector3.right * Time.deltaTime * platformSpeed, Space.World);
+        }
+        
+    }
+
+    void PullPlatform(){
+        if(platform.transform.position.x >108){
+            platform.transform.Translate(Vector3.left * Time.deltaTime * platformSpeed, Space.World);
+        }
+
+
     }
 }

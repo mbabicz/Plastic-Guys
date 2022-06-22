@@ -10,7 +10,6 @@ public class PhysicsLagCompensation : MonoBehaviourPunCallbacks, IPunObservable
     private Vector3 _netPosition;
     private Quaternion _netRotation;
     private Vector3 _previousPos;
-
     public bool TeleportIfFar;
     public float teleportIfFarDistance;
     
@@ -18,15 +17,14 @@ public class PhysicsLagCompensation : MonoBehaviourPunCallbacks, IPunObservable
     public float smoothRot = 5f;
     private void Awake() {
             rb = GetComponent<Rigidbody>();
-            PhotonNetwork.SendRate = 1000;
-            PhotonNetwork.SerializationRate = 10;
+            PhotonNetwork.SendRate = 60;
+            PhotonNetwork.SerializationRate = 15;
     }
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info){
         if(stream.IsWriting){
             stream.SendNext(rb.position);
@@ -40,7 +38,6 @@ public class PhysicsLagCompensation : MonoBehaviourPunCallbacks, IPunObservable
 
             float lag = Mathf.Abs((float) (PhotonNetwork.Time - info.SentServerTime));
             _netPosition +=(rb.velocity * lag);
-            //rb.position += rb.velocity * lag;
         }
     }
 

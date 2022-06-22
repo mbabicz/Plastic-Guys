@@ -7,14 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 {
-    // Start is called before the first frame update
     public InputField createInput;
     public InputField joinInput;
 
     public void CreateRoom(){
         PhotonNetwork.CreateRoom(createInput.text);
     }
-
 
     public void JoinRoom(){
         PhotonNetwork.JoinRoom(joinInput.text);

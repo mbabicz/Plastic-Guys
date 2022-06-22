@@ -11,19 +11,10 @@ public class GroundDetectionL : MonoBehaviour
     public ThirdPersonMovement TPM;
     PhotonView view;    
 
-
     void Start()
     {
-        //TPM = FindObjectOfType<ThirdPersonMovement>();
         view = transform.root.GetComponent<PhotonView>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //if(view.IsMine) Debug.Log("Ismine");
-    }
-
 
    private bool IsFloor(Vector3 v)
     {
@@ -48,7 +39,6 @@ public class GroundDetectionL : MonoBehaviour
                     CancelInvoke(nameof(StopGrounded));
                 }
             }
-
             float delay = 3f;
             if (!cancellingGrounded)
             {
@@ -57,7 +47,6 @@ public class GroundDetectionL : MonoBehaviour
             }
         }
     }
-
     private void StopGrounded()
     {
         TPM.isGroundedL = false;

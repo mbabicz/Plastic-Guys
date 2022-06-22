@@ -7,7 +7,6 @@ public class CopyLimb : MonoBehaviour
     [SerializeField] private Transform targetLimb;
     [SerializeField] private ConfigurableJoint m_ConfigurableJoint;
 
-
     Quaternion targetInitialRotation;
     void Start()
     {
