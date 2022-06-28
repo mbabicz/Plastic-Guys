@@ -13,11 +13,10 @@ __Plastic Guys__ is _multiplayer_ game. To pass the game, both players needs to 
 
 
 <img src = "https://user-images.githubusercontent.com/49866616/176234654-8a15a43a-8873-4878-9b84-bed0c7f8fd5d.PNG" width="500" height="300" />
-
+_Main Menu_
 <img src = "https://user-images.githubusercontent.com/49866616/176234538-94397c6d-46e9-4ce1-9f2a-a8d77ea66faf.gif" width="500" height="300" />
-
 <img src = "https://user-images.githubusercontent.com/49866616/176234542-300fb6d7-8952-4aac-bf11-5b055adbb310.gif" width="500" height="300" />
-
+_Movement and grab_
 
 
 ## BUILD WITH
