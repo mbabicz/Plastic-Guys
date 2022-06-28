@@ -11,12 +11,11 @@
 *This is a game that I'm still working on.* <br /><br />
 __Plastic Guys__ is _multiplayer_ game. To pass the game, both players needs to cooperate to unlock rooms and pass all levels. To grab, use, drop etc. things we need to controll character arms with both mouse buttons and camera. Movement was designed with Unity Ragdoll system and rigidbodies. I used Photon Networking to implement multiplayer.
 
-
-<img src = "https://user-images.githubusercontent.com/49866616/176234654-8a15a43a-8873-4878-9b84-bed0c7f8fd5d.PNG" width="500" height="300" />
 _Main Menu_
+<img src = "https://user-images.githubusercontent.com/49866616/176234654-8a15a43a-8873-4878-9b84-bed0c7f8fd5d.PNG" width="500" height="300" />
+_Movement and grab_
 <img src = "https://user-images.githubusercontent.com/49866616/176234538-94397c6d-46e9-4ce1-9f2a-a8d77ea66faf.gif" width="500" height="300" />
 <img src = "https://user-images.githubusercontent.com/49866616/176234542-300fb6d7-8952-4aac-bf11-5b055adbb310.gif" width="500" height="300" />
-_Movement and grab_
 
 
 ## BUILD WITH
